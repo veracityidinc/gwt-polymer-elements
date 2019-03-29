@@ -270,5 +270,5 @@ To compile the `vaadin-gwt-polymer-elements` library by yourself.
 
  1. To run and debug the demo, go to the demo folder `$ cd demo`
  1. Run `$ mvn gwt:devmode` to run the demo in SuperDevMode, otherwise run `$ mvn clean package` to
- build the demo application under `target` directory.
+ build the demo application under `target` directory. In case of root requirements `bower` has been configured to also work with root privileges so feel free to use `sudo`
  1. You can serve the demo directly from the `target/gwt-polymer-demo` or you can deploy the generated `target/gwt-polymer-demo.war` in a servlet container.
