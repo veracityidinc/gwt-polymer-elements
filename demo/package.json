@@ -3,8 +3,11 @@
   "version": "1.7.0",
   "description": "demo npm and bower dependencies not included in jar",
   "license": "Apache-2.0",
-  "repository": "https://github.com/vaadin/gwt-polymer-elements.git",
+  "repository": "https://github.com/veracityidinc/gwt-polymer-elements.git",
   "dependencies": {
-    "gwt-api-generator": "vaadin/gwt-api-generator#master"
+    "gwt-api-generator": "veracityidinc/gwt-api-generator"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1"
   }
 }
