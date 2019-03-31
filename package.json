@@ -8,18 +8,18 @@
     "gwt-api-generator": "veracityidinc/gwt-api-generator"
   },
   "scripts": {
-    "postinstall": "node_modules/.bin/gwt-api-generator --package=manolo/gwt-polymer-elements#master --artifactId=vaadin-gwt-polymer-elements --groupId=com.vaadin.polymer --pom && mvn clean install javadoc:jar"
+    "postinstall": "node_modules/.bin/gwt-api-generator --package=veracityidinc/gwt-polymer-elements#master --artifactId=vaadin-gwt-polymer-elements --groupId=com.vaadin.polymer --pom && mvn clean install javadoc:jar"
   },
   "pom": {
     "version": "1.11.3.0",
     "organization": {
       "name": "GWT Polymer",
-      "url": "http://github.com/manolo/gwt-polymer-elements"
+      "url": "https://github.com/veracityidinc/gwt-polymer-elements"
     },
     "scm": {
-      "connection": "scm:git:git@github.com:manolo/gwt-polymer-elements.git",
-      "developerConnection": "scm:git:git@github.com:manolo/gwt-polymer-elements.git",
-      "url": "https://github.com/manolo/gwt-polymer-elements"
+      "connection": "scm:git:git@github.com:veracityidinc/gwt-polymer-elements.git",
+      "developerConnection": "scm:git:git@github.com:veracityidinc/gwt-polymer-elements.git",
+      "url": "https://github.com/veracityidinc/gwt-polymer-elements"
     }
   },
   "keywords": [

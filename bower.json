@@ -15,7 +15,7 @@
     "webcomponents",
     "gwt"
   ],
-  "homepage": "https://github.com/vaadin/gwt-polymer-elements",
+  "homepage": "https://github.com/veracityidinc/gwt-polymer-elements",
   "dependencies": {
     "polymer": "~1.11.3",
     "iron-elements": "#master",
