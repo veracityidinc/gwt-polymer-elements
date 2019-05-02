@@ -53,7 +53,16 @@ target
 .classpath
 
 # Temporary stuff in demo
-demo/bower_components
-demo/src/main/resources
-demo/node
-demo/src/main/java/com/vaadin/polymer/vaadin
+# IntelliJ
+.idea/
+
+# bower
+bower_components/
+
+# npm
+package-lock.json
+
+# gwt-api-generator
+pom.xml
+src/
+

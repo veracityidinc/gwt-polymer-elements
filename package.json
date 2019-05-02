@@ -8,10 +8,10 @@
     "gwt-api-generator": "veracityidinc/gwt-api-generator"
   },
   "scripts": {
-    "postinstall": "node_modules/.bin/gwt-api-generator --package=veracityidinc/gwt-polymer-elements#master --artifactId=vaadin-gwt-polymer-elements --groupId=com.vaadin.polymer --pom && mvn clean install javadoc:jar"
+    "postinstall": "node_modules/.bin/gwt-api-generator --package=veracityidinc/gwt-polymer-elements#master --artifactId=gwt-polymer-elements --groupId=com.vaadin.polymer --pom && mvn clean install"
   },
   "pom": {
-    "version": "1.11.3.0",
+    "version": "1.11.3",
     "organization": {
       "name": "GWT Polymer",
       "url": "https://github.com/veracityidinc/gwt-polymer-elements"

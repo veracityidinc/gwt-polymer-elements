@@ -23,7 +23,7 @@ We took this decision because once demonstrated that polymer elements could be e
 [Platinum](https://elements.polymer-project.org/browse?package=platinum-elements) and
 [Vaadin](https://vaadin.com/elements) collections, but more might be added in the future.
 
- The library has been generated using the Vaadin [gwt-api-generator](https://github.com/vaadin/gwt-api-generator), an utility able to inspect polymer webcomponents and emit GWT Java code.
+ The library has been generated using the Vaadin [gwt-api-generator](https://github.com/veracityid/gwt-api-generator), an utility able to inspect polymer webcomponents and emit GWT Java code.
 
  Because Polymer differentiates between collections, gwt-polymer-elements classes are prefixed with the same prefixes (_Iron, Paper, Vaadin_), in order to easily refer to the original web component, and to easily find the documentation related with it.
 
@@ -38,7 +38,7 @@ We took this decision because once demonstrated that polymer elements could be e
 
 You need at least GWT-2.8.0 to use the library.
 
-### Add vaadin-gwt-polymer-elements to your CLASSPATH
+### Add vaadin gwt-polymer-elements to your CLASSPATH
 The `.jar` file includes all the java code and web components of
 Polymer Iron and Paper collections, so as you don't have to deal with the process of downloading and deploying all js wrapped libraries and components.
 
@@ -50,8 +50,8 @@ Polymer Iron and Paper collections, so as you don't have to deal with the proces
    <dependencies>
      <dependency>
        <groupId>com.vaadin.polymer</groupId>
-       <artifactId>vaadin-gwt-polymer-elements</artifactId>
-       <version>1.7.0.0</version>
+       <artifactId>gwt-polymer-elements</artifactId>
+       <version>1.11.3-SNAPSHOOT</version>
        <scope>provided</scope>
      </dependency>
    </dependencies>
@@ -59,7 +59,7 @@ Polymer Iron and Paper collections, so as you don't have to deal with the proces
 
 ##### Manually
 - otherwise you can [download](http://repo1.maven.org/maven2/com/vaadin/polymer/vaadin-gwt-polymer-elements/)
-  the `vaadin-gwt-polymer-elements-1.7.0.0.jar` archive and put it in your gwt project classpath.
+  the `vaadin-gwt-polymer-elements-1.9.3.1.jar` archive and put it in your gwt project classpath.
 
 ### Update your module configuration
 
@@ -244,31 +244,25 @@ In summary, for classic and production GWT projects it would be easier to use th
    })
 
  ```
- 
-### Using latest snapshot
-
-Add the following repo to your `pom.xml`, and change the version using the latest listed at in [this url](https://oss.sonatype.org/content/repositories/snapshots/com/vaadin/polymer/vaadin-gwt-polymer-elements/)
-
-       <repository>
-         <id>snapshots</id>
-         <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-         <snapshots><enabled>true</enabled></snapshots>
-       </repository>
-
 
 ## Contributors
 
 ## Building the project
 
-To compile the `vaadin-gwt-polymer-elements` library by yourself.
+To compile the vaadin `gwt-polymer-elements` library by yourself.
 
- 1. Clone the repository with `$ git checkout https://github.com/vaadin/gwt-polymer-elements.git`
+ 1. Clone the repository with `$ git checkout https://github.com/veracityidinc/gwt-polymer-elements.git`
  1. Change to the project folder `$ cd gwt-polymer-elements`
  1. Run `$ npm install` to download all components to the `src/main/resources` folder, to create all java files needed for GWT in the `src/main/java/` folder and to compile and install the components library in you local maven repo.
 
-## Running the demo locally
+ ## Building on different branch than master; i.e. stop polluting the master
 
- 1. To run and debug the demo, go to the demo folder `$ cd demo`
- 1. Run `$ mvn gwt:devmode` to run the demo in SuperDevMode, otherwise run `$ mvn clean package` to
- build the demo application under `target` directory. In case of root requirements `bower` has been configured to also work with root privileges so feel free to use `sudo`
- 1. You can serve the demo directly from the `target/gwt-polymer-demo` or you can deploy the generated `target/gwt-polymer-demo.war` in a servlet container.
+  1. Create a new branch; e.g. `$ git checkout -b bpetridean`
+  1. Open `package.json` and in `postinstall` line replace `master` with `bpetridean`; e.g. `"postinstall": "node_modules/.bin/gwt-api-generator --package=git@github.com:veracityidinc/gwt-polymer-elements.git#bpetridean --groupId=com.vaadin.polymer --artifactId=gwt-polymer-elements --pom && mvn clean install"`
+  1. Add, commit and push your changes in scope of the newly created branch; e.g. `bpetridean`
+
+  ## Building on localhost
+
+  1. Open `package.json` and in `postinstall` line remove `package` arg; e.g. `"postinstall": "node_modules/.bin/gwt-api-generator --groupId=com.vaadin.polymer --artifactId=gwt-polymer-elements --pom && mvn clean install"`
+  1. Run `bower install` to download all dependencies
+  1. Run `npm install` to build the java wrappers and install the jar in scope of local `.m2`
