@@ -253,7 +253,7 @@ To compile the vaadin `gwt-polymer-elements` library by yourself.
 
  1. Clone the repository with `$ git checkout https://github.com/veracityidinc/gwt-polymer-elements.git`
  1. Change to the project folder `$ cd gwt-polymer-elements`
- 1. Run $ ./install.sh to download all components to the src/main/resources folder, to create all java files needed for GWT in the src/main/java/ folder and to compile and install the components library in you local maven repo.
+ 1. Run `$ ./install.sh` to download all components to the `src/main/resources` folder, to create all java files needed for GWT in the `src/main/java/` folder and to compile and install the components library in you local maven repo.
 
  ## Building on different branch than master; i.e. stop polluting the master
 
