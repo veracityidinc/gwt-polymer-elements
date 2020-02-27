@@ -51,7 +51,7 @@ Polymer Iron and Paper collections, so as you don't have to deal with the proces
      <dependency>
        <groupId>com.vaadin.polymer</groupId>
        <artifactId>gwt-polymer-elements</artifactId>
-       <version>1.11.3-SNAPSHOOT</version>
+       <version>1.11.3</version>
        <scope>provided</scope>
      </dependency>
    </dependencies>
