@@ -1,6 +1,6 @@
 {
   "name": "gwt-polymer-elements",
-  "version": "1.11.4",
+  "version": "2.0.0",
   "description": "",
   "author": "Vaadin Ltd",
   "license": "Apache-2.0",
@@ -19,7 +19,7 @@
     "url": "git+ssh://git@github.com:veracityidinc/gwt-polymer-elements.git"
   },
   "pom": {
-    "version": "1.11.4",
+    "version": "2.0.0",
     "organization": {
       "name": "GWT Polymer",
       "url": "https://github.com/veracityidinc/gwt-polymer-elements"

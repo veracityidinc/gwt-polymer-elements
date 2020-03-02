@@ -23,7 +23,7 @@ We took this decision because once demonstrated that polymer elements could be e
 [Platinum](https://elements.polymer-project.org/browse?package=platinum-elements) and
 [Vaadin](https://vaadin.com/elements) collections, but more might be added in the future.
 
- The library has been generated using the Vaadin [gwt-api-generator](https://github.com/veracityid/gwt-api-generator), an utility able to inspect polymer webcomponents and emit GWT Java code.
+ The library has been generated using the [gwt-api-generator](https://github.com/veracityid/gwt-api-generator), an utility able to inspect polymer webcomponents and emit GWT Java code.
 
  Because Polymer differentiates between collections, gwt-polymer-elements classes are prefixed with the same prefixes (_Iron, Paper, Vaadin_), in order to easily refer to the original web component, and to easily find the documentation related with it.
 
@@ -47,19 +47,34 @@ Polymer Iron and Paper collections, so as you don't have to deal with the proces
  - If your project uses maven add the following dependency to your `pom.xml`
 
   ```xml
+    <repositories>
+        <repository>
+            <id>veracityMavenReleases</id>
+            <name>VeracityID Maven Releases</name>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+                <checksumPolicy>fail</checksumPolicy>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+                <updatePolicy>never</updatePolicy>
+                <checksumPolicy>fail</checksumPolicy>
+            </snapshots>
+            <url>https://repo.veracityid.com/repository/maven-releases/</url>
+            <layout>default</layout>
+        </repository>
+    </repositories>
+
    <dependencies>
      <dependency>
        <groupId>com.vaadin.polymer</groupId>
        <artifactId>gwt-polymer-elements</artifactId>
-       <version>1.11.3</version>
+       <version>2.0.0</version>
        <scope>provided</scope>
      </dependency>
    </dependencies>
   ```
-
-##### Manually
-- otherwise you can [download](http://repo1.maven.org/maven2/com/vaadin/polymer/vaadin-gwt-polymer-elements/)
-  the `vaadin-gwt-polymer-elements-1.9.3.1.jar` archive and put it in your gwt project classpath.
 
 ### Update your module configuration
 
@@ -74,8 +89,7 @@ Polymer Iron and Paper collections, so as you don't have to deal with the proces
 
 - Only Chrome has full native support for Web Components nowadays, therefore, to make your project work with all modern browsers, you have to include the WebComponents Polyfill.
 
-  If you use the polymer components as `Widgets`, the library will lazy load it when needed.
-Otherwise load it very early in your `.html` host page as it is shown in the following code.
+    Load it very early in your `.html` host page as it is shown in the following code.
 
 ```html
 <head>
@@ -86,32 +100,7 @@ Otherwise load it very early in your `.html` host page as it is shown in the fol
 
 ## Consuming Web Components in GWT
 
-Vaadin `gwt-polymer-elements` bundles classes to build your application using either `Widgets` or JsInterop `Elements`. The former is the classic approach, while the latter will become the new tendency.
-
-But Right now, `Elements` is the most difficult way because GWT lacks of a complete `Elemental-2.0` API relying on `JsInterop`.
-We provide a very small set of elemental interfaces limited to those needed for our implementation, they will be replaced by Elemental-2.0 when it was available.
-
-In summary, for classic and production GWT projects it would be easier to use the `Widget` since the API would not have important changes. Otherwise, if you want to get rid of the widget hierarchy we recommend to start using the `Element` API mixing it with some DOM manipulation library like `gwtquery` or just the methods included in the elemental API.
-
-
- - Using the classic **Widget API** in Java.
-
-  ```java
-  PaperButton button = new PaperButton();
-  button.setIcon("polymer");
-  button.setLabel("Polymer");
-  button.setRaised(true);
-
-  button.addClickHandler(new ClickHandler() {
-    public void onClick(ClickEvent event) {
-      // ...
-    }
-  });
-
-  RootPanel.get().add(button);
-  ```
-
-  _Note: Widget constructors accept any HTML content as argument which is appended to the web component rendered DOM_
+Vaadin `gwt-polymer-elements` bundles classes to build your application using JsInterop `Elements`.
 
  - Using the **Element API** in Java.
 
@@ -134,12 +123,11 @@ In summary, for classic and production GWT projects it would be easier to use th
   RootPanel.get().getElement().appendChild(button);
   ```
 
- - Using `Widgets` or `Elements` in **UiBinder**
+ - Using `Elements` in **UiBinder**
 
   ```xml
    <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
-    xmlns:g='urn:import:com.google.gwt.user.client.ui'
-    xmlns:p='urn:import:com.vaadin.polymer.paper.widget'>
+    xmlns:g='urn:import:com.google.gwt.user.client.ui'>
 
    <ui:style>
      .container paper-button.colored {
@@ -149,9 +137,6 @@ In summary, for classic and production GWT projects it would be easier to use th
    </ui:style>
 
    <g:HTMLPanel>
-     <!-- As Widget -->
-     <p:PaperButton toggles="true" raised="true" active="true" addStyleNames="{style.colored}">active</p:PaperButton>
-
      <!-- As Element -->
      <paper-button raised="" noink="">Click me</paper-button>
    </g:HTMLPanel>
@@ -166,8 +151,7 @@ In summary, for classic and production GWT projects it would be easier to use th
 
   ```xml
 <ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
-    xmlns:g='urn:import:com.google.gwt.user.client.ui'
-    xmlns:p='urn:import:com.vaadin.polymer.paper.widget'>
+    xmlns:g='urn:import:com.google.gwt.user.client.ui'>
 
 <g:HTMLPanel>
   <style is="custom-style">
@@ -175,10 +159,6 @@ In summary, for classic and production GWT projects it would be easier to use th
         --paper-icon-button-ink-color: var(--paper-indigo-500);
      }
   </style>
-  <p:PaperToolbar>
-     <p:PaperIconButton icon="menu"/>
-     <span class="title">Toolbar</span>
-  </p:PaperToolbar>
 </g:HTMLPanel>
   ```
 
@@ -193,11 +173,6 @@ In summary, for classic and production GWT projects it would be easier to use th
 ### Importing Web Components
   Before using any component, you have to import the appropriate files. But `gwt-polymer-elements` comes with some utilities so as you it would be done automatically.
 
- - **Widgets** :
-  When you use a widget, the import happens automatically
- ```
-     PaperButton button = new PapperButton();
- ```
  - **Elements** :
   Create new components through the `Polymer` helper class
  ```
