@@ -70,7 +70,7 @@ Polymer Iron and Paper collections, so as you don't have to deal with the proces
      <dependency>
        <groupId>com.vaadin.polymer</groupId>
        <artifactId>gwt-polymer-elements</artifactId>
-       <version>2.0.0</version>
+       <version>2.0.1</version>
        <scope>provided</scope>
      </dependency>
    </dependencies>

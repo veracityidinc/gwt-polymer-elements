@@ -1,6 +1,6 @@
 {
   "name": "gwt-polymer-elements",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "",
   "author": "Vaadin Ltd",
   "license": "Apache-2.0",
@@ -9,7 +9,7 @@
   },
   "homepage": "https://github.com/veracityidinc/gwt-polymer-elements#readme",
   "dependencies": {
-    "gwt-api-generator": "veracityidinc/gwt-api-generator"
+    "gwt-api-generator": "github:veracityidinc/gwt-api-generator"
   },
   "scripts": {
     "postinstall": "node_modules/.bin/gwt-api-generator --artifactId=gwt-polymer-elements --groupId=com.vaadin.polymer --pom && mvn clean install"
@@ -19,7 +19,7 @@
     "url": "git+ssh://git@github.com:veracityidinc/gwt-polymer-elements.git"
   },
   "pom": {
-    "version": "2.0.0",
+    "version": "2.0.1",
     "organization": {
       "name": "GWT Polymer",
       "url": "https://github.com/veracityidinc/gwt-polymer-elements"
