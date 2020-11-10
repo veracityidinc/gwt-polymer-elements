@@ -241,3 +241,12 @@ To compile the vaadin `gwt-polymer-elements` library by yourself.
   1. Open `package.json` and in `postinstall` line remove `package` arg; e.g. `"postinstall": "node_modules/.bin/gwt-api-generator --groupId=com.vaadin.polymer --artifactId=gwt-polymer-elements --pom && mvn clean install"`
   1. Run `bower install` to download all dependencies
   1. Run `npm install` to build the java wrappers and install the jar in scope of local `.m2`
+  
+## Publish as maven artifact
+
+1. Assign a new `<version>` in `pom.xml`, as `updates to artifacts are NOT allowed` in veracityid `maven-releases` repository
+2. In your terminal run `publish.sh`
+
+Needless to say that in order to publish an artifact one must have write access to the repository; e.g. `https://repo.veracityid.com/repository`
+
+  
